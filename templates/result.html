@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Hasil Deteksi</title>
+
+<style>
+
+body{
+    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    font-family:'Segoe UI',sans-serif;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.result-box{
+    background:white;
+    max-width:700px;
+    margin:auto;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h2{
+    color:#2e7d32;
+}
+
+.leaf-image{
+    width:260px;
+    border-radius:15px;
+    margin:20px 0;
+}
+
+.disease-name{
+    font-size:26px;
+    color:#1b5e20;
+    font-weight:600;
+}
+
+.confidence{
+    font-size:16px;
+    margin-top:8px;
+    color:#777;
+}
+
+.description{
+    margin-top:20px;
+    font-size:16px;
+    color:#444;
+    line-height:1.7;
+    text-align:justify;
+}
+
+.recommend-box{
+    text-align:left;
+    background:linear-gradient(135deg,#2e7d32,#43a047);
+    padding:22px;
+    border-radius:15px;
+    margin-top:30px;
+}
+
+.recommend-box h3{
+    color:white;
+    margin-bottom:10px;
+}
+
+.recommend-box li{
+    color:white;
+    margin-bottom:8px;
+}
+
+.no-detect{
+    font-size:20px;
+    color:#c62828;
+    margin-top:15px;
+}
+
+.btn-back{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 30px;
+    background:#2e7d32;
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+}
+
+.btn-back:hover{
+    background:#1b5e20;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="result-box">
+
+<h2>Hasil Deteksi</h2>
+
+<img src="{{ url_for('static', filename='uploads/' + image) }}" class="leaf-image">
+
+{% if disease %}
+
+    <!-- Nama Penyakit -->
+    <div class="disease-name">
+        {{ disease.nama }}
+    </div>
+
+    <!-- Confidence -->
+    <div class="confidence">
+        Confidence: {{ confidence }} %
+    </div>
+
+    <!-- 🔥 DESKRIPSI ILMIAH -->
+    <div class="description">
+        {{ disease.deskripsi }}
+    </div>
+
+    <!-- 🔥 REKOMENDASI -->
+    <div class="recommend-box">
+        <h3>Rekomendasi Penanganan :</h3>
+
+        <ul>
+        {% for item in disease.penanganan %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+{% else %}
+
+    <div class="no-detect">
+        Penyakit tidak terdeteksi
+    </div>
+
+    <div class="description">
+        Daun yang diunggah tidak menunjukkan ciri-ciri penyakit yang dikenali oleh sistem.
+    </div>
+
+{% endif %}
+
+<a href="/" class="btn-back">Deteksi Lagi</a>
+
+</div>
+
+</body>
+</html>

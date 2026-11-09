@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Deteksi Penyakit Daun Mangga</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- BRAND -->
+<div class="brand">
+<span class="logo">🥭</span>
+<span class="brand-name">ManggoLeafAI</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Deteksi Penyakit Daun Mangga Secara Cepat</h1>
+
+<p>
+Platform berbasis AI untuk membantu petani dan pecinta tanaman
+mengenali penyakit daun mangga dengan cepat dan akurat.
+</p>
+
+<div class="hero-buttons">
+<a href="#tentang" class="btn-primary">Pelajari Selanjutnya</a>
+<a href="#upload" class="btn-outline">Mulai Deteksi</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- TENTANG -->
+<section id="tentang" class="section">
+
+<span class="badge">Tentang Sistem</span>
+
+<h2>Deteksi Cepat & Akurat</h2>
+
+<div class="tech-grid">
+
+<div class="tech-card">
+<div class="icon">⚡</div>
+<h3>Deteksi Real-Time</h3>
+<p>Proses deteksi berlangsung kurang dari 1 detik.</p>
+</div>
+
+<div class="tech-card">
+<div class="icon">🤖</div>
+<h3>AI YOLO</h3>
+<p>Mendeteksi penyakit daun mangga secara otomatis.</p>
+</div>
+
+<div class="tech-card">
+<div class="icon">🎯</div>
+<h3>Akurasi Tinggi</h3>
+<p>Model dilatih dengan dataset khusus.</p>
+</div>
+
+<div class="tech-card">
+<div class="icon">📷</div>
+<h3>Object Detection</h3>
+<p>Mendeteksi penyakit langsung dari gambar daun.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PENYAKIT -->
+<section class="section">
+
+<h2>Penyakit yang Dapat Dideteksi</h2>
+
+<div class="disease-grid">
+
+<div class="disease-card">
+<h3>Antraknosa</h3>
+<p><b>Penyebab:</b> Jamur Colletotrichum gloeosporioides</p>
+<ul>
+<li>Bercak hitam atau coklat</li>
+<li>Daun mengering dan rontok</li>
+<li>Bercak cekung pada daun</li>
+</ul>
+</div>
+
+<div class="disease-card">
+<h3>Bacterial Canker</h3>
+<p><b>Penyebab:</b> Bakteri Xanthomonas campestris</p>
+<ul>
+<li>Bercak hitam tepi kuning</li>
+<li>Daun berlubang</li>
+<li>Daun mengering</li>
+</ul>
+</div>
+
+<div class="disease-card">
+<h3>Powdery Mildew</h3>
+<p><b>Penyebab:</b> Jamur Oidium mangiferae</p>
+<ul>
+<li>Lapisan putih seperti tepung</li>
+<li>Daun menggulung</li>
+<li>Pertumbuhan terhambat</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TEKNOLOGI -->
+<section class="section">
+
+<span class="badge">Teknologi</span>
+
+<h2>Teknologi yang Digunakan</h2>
+
+<div class="tech-grid">
+
+<div class="tech-card">
+<div class="icon">🎯</div>
+<h3>YOLO</h3>
+<p>Model object detection untuk mengenali penyakit daun mangga secara cepat.</p>
+</div>
+
+<div class="tech-card">
+<div class="icon">⚙️</div>
+<h3>Python & Flask</h3>
+<p>Framework backend ringan untuk membangun sistem deteksi berbasis web.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DETEKSI -->
+<section id="upload" class="section detect-section">
+
+<div class="container detect-header">
+
+<h2>Deteksi Penyakit Daun Mangga</h2>
+
+<p>Unggah foto daun mangga dan sistem akan menganalisisnya secara otomatis.</p>
+
+</div>
+
+<div class="upload-wrapper">
+
+<form id="detectForm" action="/predict" method="POST" enctype="multipart/form-data">
+
+<label class="upload-area">
+
+<input type="file" name="image" id="imageInput" accept="image/*" hidden>
+
+<div class="upload-content" id="uploadContent">
+
+<div class="upload-icon">📷</div>
+
+<h3>Upload Foto Daun Mangga</h3>
+
+<p>Klik tombol di bawah untuk memilih gambar</p>
+
+<button type="button" id="chooseBtn" class="btn-upload">
+Pilih Gambar
+</button>
+
+</div>
+
+<img id="previewImage" class="preview-image" style="display:none;" />
+
+</label>
+
+<button type="submit" class="btn-detect">
+🔍 Deteksi Sekarang
+</button>
+
+</form>
+
+
+<!-- LOADING -->
+<div id="loadingBox" class="loading-box" style="display:none;">
+
+<div class="spinner"></div>
+
+<p>Memproses gambar, mohon tunggu...</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
