@@ -1,0 +1,14 @@
+services:
+  sddm-mangga:
+    build: .
+    image: sddm-mangga:latest
+    container_name: sddm-mangga
+    restart: unless-stopped
+    # Hanya bind ke localhost; Nginx aaPanel yang jadi reverse proxy publik
+    ports:
+      - "127.0.0.1:5010:5000"
+    volumes:
+      - uploads:/app/static/uploads
+
+volumes:
+  uploads:
